@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<a href="{{path('admin_messages_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<h1>Modifier un message</h1>
+<div class="container" style="width: 30rem;">
+{{ form_start(form) }}
+    <div class="form-control mt-3 border border-info message">
+        {{ form_label(form.users, 'Auteur du message') }}
+        {{ form_widget(form.users) }}
+        <div class="form-error">
+        {{ form_errors(form.users) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info message">
+        {{ form_label(form.ads, 'Annonce concernée') }}
+        {{ form_widget(form.ads) }}
+        <div class="form-error">
+        {{ form_errors(form.ads) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.status, 'Status') }}
+        {{ form_widget(form.status) }}
+    </div>
+    <div class="form-control mt-2 border border-info message">
+        {{ form_label(form.content, 'Contenu du message') }}
+        {{ form_widget(form.content) }}
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Valider</button>
+{{ form_end(form) }}
+</div>   
+
+{% endblock %}

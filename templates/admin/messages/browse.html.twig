@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Liste des messages</h1>
+
+<div class="container">
+  <a href="{{ path('admin_messages_add' )}}"><button type="button" class="btn btn-outline-secondary mt-4 mb-3">Ajouter un nouveau message</button></a>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">ANNONCE CONCERNÉE</th>
+        <th scope="col">AUTEUR DU MESSAGE</th>
+        <th scope="col">STATUS</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for message in messages %}
+            {% if ((message.id)%2) ==  1 %}
+            <tr class="table-vert-clair">       
+            {% else %}
+            <tr class="table-vert-foncé">    
+            {% endif %}
+              <th scope="row">{{ message.id }}</th>
+              <td>Annonce N° {{ message.ads.id }} : {{ message.ads.plantAds }}</td>
+              <td>{{ message.users.email }}</td>
+              <td>
+              {% if message.status == 1 %}
+                Actif
+              {% else %}
+                Inactif
+              {% endif %}
+              </td>
+              <td><a href="{{ path('admin_messages_read', {id:message.id} )}}" class="btn btn-info">Voir</a></td>
+          </tr>     
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<a href="{{path('admin_plants_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<h1>Ajouter une fiche plante</h1>
+<div class="container" style="width: 30rem;">
+{{ form_start(form) }}
+    <div class="form-control mt-3 border border-info">
+        {{ form_label(form.name, 'Nom') }}
+        {{ form_widget(form.name) }}
+        <div class="form-error">
+        {{ form_errors(form.name) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.variety, 'Variété') }}
+        {{ form_widget(form.variety) }}
+        <div class="form-error">
+        {{ form_errors(form.variety) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.difficulty, 'Difficulté') }}
+        {{ form_widget(form.difficulty) }}
+        <div class="form-error">
+        {{ form_errors(form.difficulty) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.category, 'Catégorie') }}
+        {{ form_widget(form.category) }}
+        <div class="form-error">
+        {{ form_errors(form.category) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.description, 'Description') }}
+        {{ form_widget(form.description) }}
+        <div class="form-error">
+        {{ form_errors(form.description) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.status, 'Status') }}
+        {{ form_widget(form.status) }}
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_widget(form.image) }}
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Valider</button>
+{{ form_end(form) }}
+</div>  
+
+{% endblock %}

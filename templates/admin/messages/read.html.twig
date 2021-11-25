@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{path('admin_messages_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">{{ messages.users.email }}</div>
+        <div class="card-body">
+            <p class="card-text">{{messages.content}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Annonce concernée N° {{ messages.ads.id }} : {{ messages.ads.plantAds }}</li>
+            <li class="list-group-item">
+                Status : 
+                {% if messages.status == 1 %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}</li>
+        </ul>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ path('admin_messages_edit', {id: messages.id}) }}" class="btn btn-outline-primary me-3">Modifier</a>
+                <form action="{{ path('admin_messages_delete', {id: messages.id}) }}" method="post" class="">
+                <button class="btn btn-outline-danger">Supprimer</button>
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="_token" value="{{ csrf_token('deleteMessage') }}">
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

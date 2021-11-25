@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Liste des fiches plantes</h1>
+
+<div class="container">
+  <a href="{{ path('admin_plants_add' )}}"><button type="button" class="btn btn-outline-secondary mt-4 mb-3">Ajouter une nouvelle fiche plante</button></a>
+      <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NOM</th>
+        <th scope="col">CATEGORIE</th>
+        <th scope="col">STATUS</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for plant in plants %}
+          {% if ((plant.id)%2) ==  1 %}
+          <tr class="table-vert-clair">       
+          {% else %}
+          <tr class="table-vert-foncé">    
+          {% endif %}
+              <th scope="row">{{ plant.id }}</th>
+              <td>{{ plant.name }}</td>
+              <td>{{ plant.category }}</td>
+              <td>
+              {% if plant.status == 1 %}
+                Actif
+              {% else %}
+                Inactif
+              {% endif %}
+              </td>
+              <td><a href="{{ path('admin_plants_read', {id:plant.id} )}}" class="btn btn-info">Voir</a></td>
+          </tr>     
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

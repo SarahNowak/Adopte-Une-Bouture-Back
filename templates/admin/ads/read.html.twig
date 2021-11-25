@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{path('admin_ads_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card mb-3" style="width: 28rem;">
+        <h3 class="card-header">{{ads.plantAds}}</h3>
+        <div class="card-body">
+            <h4 class="card-title">Annonce N° {{ads.id}} de {{ ads.users}}</h5>
+        </div>
+        {% if ads.image is not null %}
+        {% set images_directory = app.request.server.get('ADS_IMAGES_DIRECTORY') %}
+            <img src="{{ asset(images_directory ~ '/' ~ ads.image)}}" alt="" height="" class="read-image">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">{{ads.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Ville : {{ ads.city}}</li>
+            <li class="list-group-item">Catégorie : {{ ads.category}}</li>
+            <li class="list-group-item">Quantité : {{ ads.quantity}}</li> 
+            <li class="list-group-item">
+                Status : 
+                {% if ads.status == 1 %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}
+            </li>           
+        </ul>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ path('admin_ads_edit', {id: ads.id}) }}" class="btn btn-outline-primary me-3">Modifier</a>
+            <form action="{{ path('admin_ads_delete', {id: ads.id}) }}" method="post" class="">
+            <button class="btn btn-outline-danger">Supprimer</button>
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="_token" value="{{ csrf_token('deleteAds') }}">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

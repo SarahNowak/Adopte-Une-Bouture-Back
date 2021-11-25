@@ -1,0 +1,141 @@
+.abeille {
+    width: 20%;
+}
+
+.card-img-top {
+    height: 12rem;
+}
+
+h5 {
+    text-transform: uppercase;
+}
+
+h1 {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
+}
+
+.card {
+    display: block;
+    text-align: center;
+    color: #747474;
+    margin-top: 1rem;
+}
+
+.card i {
+    padding-top: 1rem;
+}
+
+.card:hover {
+    display: block;
+    text-align: center;
+    color: #78c2ad;
+    box-shadow: black 4px 4px 10px;
+}
+
+textarea {
+    width   : 430px;
+    height  : 200px;
+}
+
+input {
+    width: 300px; 
+}
+
+label
+{
+    display: inline-block;
+    width: 90px;
+}
+
+
+#user_admin_password label,
+.growth label,
+.message label {
+    width: 200px
+}
+
+#user_admin_password_first {
+    margin-left: 5.7rem;
+}
+
+#user_admin_password_second {
+    margin-left: 5.7rem;
+}
+
+#user_admin_roles_0,
+#user_admin_roles_1,
+#user_admin_status_0,
+#user_admin_status_1,
+#admin_ads_growths_1,
+#admin_ads_growths_2,
+#admin_ads_growths_3,
+#admin_ads_growths_4,
+#admin_ads_growths_5,
+#admin_ads_growths_6,
+#admin_ads_status_0,
+#admin_ads_status_1,
+#messages_admin_status_0,
+#messages_admin_status_1,
+#plants_admin_status_0,
+#plants_admin_status_1,
+#category_status_0,
+#category_status_1
+{
+    width: 3rem
+}
+
+#user_admin_roles label,
+#user_admin_status label
+{
+    margin-right: 4rem;
+}
+
+#admin_ads_growths label
+{
+    width: 22rem;
+}
+
+.labelconnexion {
+    width : 10rem
+}
+
+.btn-Connexion {
+    display: flex;
+}
+
+.btn-Connexion a {
+    margin: 2em auto;
+}
+
+.table-vert-clair {
+    background-color: #c6f1e5;
+    color: black;
+}
+
+.read-image {
+    max-width: 100%;
+}
+
+#error {
+    text-align: center;
+}
+
+.error-image {
+    width: 50%;
+    margin: auto;
+}
+
+.error404,
+.error403 {
+    width: 100%;
+}

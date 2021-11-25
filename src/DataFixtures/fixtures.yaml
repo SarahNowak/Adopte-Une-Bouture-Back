@@ -1,0 +1,81 @@
+App\Entity\Ads:
+  # create de 1 to 20 Ads
+  ads_{1..30}: 
+    plant_ads: '<word(3, true)>'
+    city: '<departmentName()>'
+    quantity: '<randomDigit()>'
+    description: '<paragraph()>'
+    category: '@category_*'
+    growths: '@growth_*'
+    users: '@user_*'
+    image: '<numberBetween(1,7)>.jpg'
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    plants : '@plants_*'
+
+App\Entity\Category:
+  category_{1..10}:
+    name (unique): '<word()>'
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+
+App\Entity\User:
+  user_1:
+    email: 'sarah@bouture.com'
+    password: '\$2y\$13\$lqZurnLMU2/epdiTYuyBWuAtmMO6zkZrz7hPt7on5EEs09ax90rCe'
+    pseudo: 'sarah'
+    adress: '<word(4, true)>'
+    postal_code: '<randomNumber(5, true)>'
+    city: '<departmentName()>'
+    roles: ['ROLE_ADMIN']
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+  user_2:
+    email: 'niko@bouture.com'
+    password: '\$2y\$13\$U9Hx8Tl2d2qKTMNGB/DO/umaOJXAoDLVTSIUj79b.w6ZMbwXPl/fe'
+    pseudo: 'niko'
+    adress: '<word(4, true)>'
+    postal_code: '<randomNumber(5, true)>'
+    city: '<departmentName()>'
+    roles: ['ROLE_USER']
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+  user_{3..20}: 
+    email: '<email()>'
+    password: '<password()>'
+    pseudo: '<userName()>'
+    adress: '<word(4, true)>'
+    postal_code: '<randomNumber(5, true)>'
+    city: '<departmentName()>'
+    roles: ['ROLE_USER']
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+
+App\Entity\Growth:
+  growth_{1..4}:
+    name (unique): '<word()>'
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+
+App\Entity\Messages:
+  messages_{1..50}:
+    content: '<paragraph()>'
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    status: '<numberBetween(1,2)>'
+    ads: '@ads_*'
+    users: '@user_*'
+
+App\Entity\Plants:
+  plants_{1..10}: 
+    name: '<word(3, true)>'
+    category: '@category_*'
+    description: '<paragraph()>'
+    createdAt: '<dateTimeBetween("-1 years", "now")>'
+    updatedAt: '<dateTimeBetween($createdAt, "now")>'
+    difficulty : '<numberBetween(1,5)>'

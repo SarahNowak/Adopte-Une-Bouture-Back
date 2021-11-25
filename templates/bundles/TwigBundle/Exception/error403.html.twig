@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès Interdit{% endblock %}
+
+{% block body %}
+<div id="error">
+    <h1>Accès Interdit</h1>
+    <a href="{{path('app_logout')}}"><button class="btn btn-info mt-2 ms-2"> Retour à l'accueil </button></a>
+    <div class="error-image"><img src="{{asset ('images/403.png')}}" alt="" class="error403"></div>
+</div>
+{% endblock %}

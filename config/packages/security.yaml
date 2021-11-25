@@ -1,0 +1,63 @@
+security:
+    enable_authenticator_manager: true
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login:
+            pattern:  ^/api/login
+            stateless: true
+            json_login:
+                check_path:               /api/login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+        api:
+            pattern:   ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                target: admin_home
+                # where to redirect after logout
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/api/user/create_user, roles: PUBLIC_ACCESS }
+        # On peut préciser que certaines routes dépendent de méthodes HTTP
+        # https://symfony.com/doc/current/security/access_control.html
+        - { path: ^/api/user/\d+, methods: [POST, GET, PUT, PATCH], roles: ROLE_USER }
+        - { path: ^/api/user/current, roles: ROLE_USER }
+        - { path: ^/api/user/avatar, roles: ROLE_USER }
+        - { path: ^/api/user, roles: ROLE_ADMIN }
+        - { path: ^/api/category, roles: ROLE_ADMIN }
+        - { path: ^/api/messages, methods: [POST, GET], roles: ROLE_USER}
+        - { path: ^/api/plants/\d+, methods: [GET], roles: PUBLIC_ACCESS }
+        - { path: ^/api/plants/, methods: [POST, PATCH, PUT, DELETE], roles: ROLE_ADMIN }
+        - { path: ^/api/ads, methods: [POST], roles: ROLE_USER}
+        - { path: ^/api, roles: PUBLIC_ACCESS }
+        - { path: ^/admin/login, roles: PUBLIC_ACCESS }
+        - { path: ^/admin/[a-z]+, roles: ROLE_ADMIN }

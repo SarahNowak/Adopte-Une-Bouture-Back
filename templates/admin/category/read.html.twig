@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{path('admin_category_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">Catégorie N° {{category.id}}</div>
+        <div class="card-body">
+            <h4 class="card-title">{{category.name}}</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Status : 
+                {% if category.status == 1 %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}
+            </li>
+        </ul>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ path('admin_category_edit', {id: category.id}) }}" class="btn btn-outline-primary me-3">Modifier</a>
+            <form action="{{ path('admin_category_delete', {id: category.id}) }}" method="post" class="">
+            <button class="btn btn-outline-danger">Supprimer</button>
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="_token" value="{{ csrf_token('deleteCategory') }}">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

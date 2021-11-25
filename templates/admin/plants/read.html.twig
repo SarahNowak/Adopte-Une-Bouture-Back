@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{path('admin_plants_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card mb-3" style="width: 28rem;">
+        <h3 class="card-header">{{plants.name}}</h3>
+        {% if plants.image is not null %}
+        {% set images_directory = app.request.server.get('ADS_IMAGES_DIRECTORY') %}
+        <img src="{{ asset(images_directory ~ '/' ~ plants.image)}}" alt="" height="" class="read-image">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">{{ plants.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Catégorie : {{ plants.category }}</li>
+            <li class="list-group-item">Variété : {{ plants.variety }}</li>
+            <li class="list-group-item">Difficulté : {{ plants.difficulty }}</li>
+            <li class="list-group-item">
+                Status : 
+                {% if plants.status == 1 %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}
+            </li>
+        </ul>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ path('admin_plants_edit', {id: plants.id}) }}" class="btn btn-outline-primary me-3">Modifier</a>
+            <form action="{{ path('admin_plants_delete', {id: plants.id}) }}" method="post" class="">
+            <button class="btn btn-outline-danger">Supprimer</button>
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="_token" value="{{ csrf_token('deletePlants') }}">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

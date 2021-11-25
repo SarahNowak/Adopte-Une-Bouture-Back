@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<a href="{{path('admin_user_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<h1>Modifier un utilisateur</h1>
+<div class="container" style="width: 30rem;">
+{{ form_start(form) }}
+    <div class="form-control mt-3 border border-info">
+        {{ form_row(form.pseudo) }}
+        <div class="form-error">
+        {{ form_errors(form.pseudo) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_row(form.email) }}
+        <div class="form-error">
+        {{ form_errors(form.email) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info passwordForm">
+        {{ form_widget(form.password) }}
+        <div class="form-error">
+        {{ form_errors(form.password) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_row(form.adress) }}
+        <div class="form-error">
+        {{ form_errors(form.adress) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_row(form.city) }}
+        <div class="form-error">
+        {{ form_errors(form.city) }}
+        </div>
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.roles, 'Rôle') }}
+        {{ form_widget(form.roles) }}
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_label(form.status, 'Status') }}
+        {{ form_widget(form.status) }}
+    </div>
+    <div class="form-control mt-2 border border-info">
+        {{ form_widget(form.avatar) }}
+    </div>
+    <button type="submit" class="btn btn-success mt-3">Valider</button>
+{{ form_end(form) }}
+</div>   
+
+{% endblock %}

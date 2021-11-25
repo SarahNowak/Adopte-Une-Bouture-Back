@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Liste des utilisateurs</h1>
+
+<div class="container">
+  <a href="{{ path('admin_user_add' )}}"><button type="button" class="btn btn-outline-secondary mt-4 mb-3">Ajouter un nouvel utilisateur</button></a>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">PSEUDO</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">ROLE</th>
+      <th scope="col">STATUS</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+        {% if ((user.id)%2) ==  1 %}
+        <tr class="table-vert-clair">       
+        {% else %}
+        <tr class="table-vert-foncé">    
+        {% endif %}
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.pseudo }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            <td>
+            {% if user.status == 1 %}
+              Actif
+            {% else %}
+              Inactif
+            {% endif %}
+            </td>
+            <td><a href="{{ path('admin_user_read', {id:user.id} )}}" class="btn btn-info">Voir</a></td>
+        </tr>     
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

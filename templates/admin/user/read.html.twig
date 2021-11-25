@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<a href="{{path('admin_user_browse')}}"><button class="btn btn-info mt-2 ms-2"> Retour à la liste </button></a>
+<div class="d-flex justify-content-center mt-5">
+    <div class="card mb-3" style="width: 28rem;">
+        <h3 class="card-header">{{user.pseudo}}</h3>
+        <div class="card-body">
+            <h4 class="card-title">{{user.email}}</h5>
+        </div>
+        {% if user.avatar is not null %}
+        {% set images_directory = app.request.server.get('ADS_IMAGES_DIRECTORY') %}
+            <img src="{{ asset(images_directory ~ '/' ~ user.avatar)}}" alt="" height="" class="read-image">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">Rôle : {{ user.roles ? user.roles|json_encode : '' }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Adresse : {{ user.adress}}</li>
+            <li class="list-group-item">Ville : {{ user.city}}</li>
+            <li class="list-group-item">
+                Status : 
+                {% if user.status == 1 %}
+                    Actif
+                {% else %}
+                    Inactif
+                {% endif %}
+            </li>
+        </ul>
+        <div class="card-footer d-flex justify-content-center">
+            <a href="{{ path('admin_user_edit', {id: user.id}) }}" class="btn btn-outline-primary me-3">Modifier</a>
+                <form action="{{ path('admin_user_delete', {id: user.id}) }}" method="post" class="">
+                <button class="btn btn-outline-danger">Supprimer</button>
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="_token" value="{{ csrf_token('deleteUser') }}">
+                </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
