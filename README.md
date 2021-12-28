@@ -39,7 +39,6 @@ L’affichage des annonces peut se faire via une carte, par défaut elle sera ce
 
 Utilisation du framework Symfony et de la bibliothèque React pour créer un réseau de partage fluide :rocket:.
 
-
-
+## Aperçu du Back office
 
 ![This is an image](https://github.com/SarahNowak/Adopte-Une-Bouture-Back/blob/main/img/annonce_backoffice.png)
