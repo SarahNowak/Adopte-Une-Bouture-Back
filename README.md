@@ -1,7 +1,7 @@
 ### Création d'un Back office pour la gestion du site Adopte Une Bouture :seedling:
 
 [![This is an image](https://img.shields.io/badge/AdopteUneBouture-07C160?style=for-the-badge&logo=AdopteUneBouture&logoColor=white)](http://adopte-une-bouture.surge.sh/)
-## Pourquoi AdopteUneBouture ?
+## Pourquoi Adopte Une Bouture ?
 
 Il existe une très grande variété de plantes qui ont des besoins tout aussi variés. 
 Il peut être difficile de choisir et d’entretenir une plante sans avoir de connaissances sur cette plante :exploding_head: :skull: :wilted_flower:.
@@ -21,7 +21,7 @@ AdopteUneBouture a pour objectif de répondre à ces besoins en permettant à se
 
 En indiquant la ville dans laquelle se trouve la plante, les membres se trouvant dans la région pourront facilement avoir connaissance de cette annonce et contacter son auteur et dialoguer avec lui afin de profiter de ses conseils et s’ils le souhaitent convenir d’un don ou d’un échange :woman_technologist: :man_technologist:.
 
-## Comment fonctionne AdopteUneBouture ?
+## Comment fonctionne Adopte Une Bouture ?
 
 Sur la page d’accueil, on retrouvera les 6 dernières annonces postées, tous utilisateurs connectés ou non peuvent avoir accès à la liste des annonces ainsi qu’ à la liste des plantes. Cependant pour pouvoir créer une annonce ou bien répondre à une annonce il faut être connecté :key: :lock:.
 
